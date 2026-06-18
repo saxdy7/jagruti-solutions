@@ -617,3 +617,209 @@ button { font-family: inherit; cursor: pointer; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .topbar-track { animation: none; }
 }
+
+/* ═══════════════════════════════════════════
+   MOBILE FIXES — max-width: 767px
+═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Prevent any element from causing horizontal scroll */
+  html, body { overflow-x: hidden; }
+  .hero, .section, .section-why, footer, header { overflow-x: hidden; }
+
+  /* ── Topbar ── */
+  .topbar { height: 28px; font-size: .72rem; }
+
+  /* ── Nav ── */
+  .nav-inner { padding: .7rem 0; gap: .5rem; }
+  .brand-name { font-size: 1rem; }
+  .brand-sub { font-size: .52rem; letter-spacing: 1px; }
+  .brand-mark { width: 34px; height: 34px; border-radius: 10px; }
+  .brand-mark svg { width: 18px; height: 18px; }
+  .btn.btn-wa.btn-sm { padding: .5rem .9rem; font-size: .8rem; gap: .35rem; }
+  .btn.btn-wa.btn-sm svg { width: 14px; height: 14px; }
+
+  /* ── Hero ── */
+  .hero { padding: 2rem 0 2.5rem; }
+  .hero-bg-blob { display: none; }            /* remove blobs causing paint issues */
+  .hero-inner { gap: 1.5rem; }
+
+  .pill-badge {
+    font-size: .72rem; padding: .32rem .8rem;
+    white-space: normal; text-align: center;
+  }
+  .hero-copy h1 { font-size: clamp(1.75rem, 8vw, 2.4rem); letter-spacing: -.3px; line-height: 1.15; }
+  .hero-desc { font-size: .95rem; }
+
+  .hero-ctas { flex-direction: column; gap: .7rem; }
+  .hero-ctas .btn { width: 100%; font-size: .95rem; padding: .9rem 1.2rem; justify-content: center; }
+
+  .hero-chips { gap: .4rem; }
+  .hchip { font-size: .75rem; padding: .28rem .7rem; }
+
+  /* Hero bento — replace 2×2 with a horizontal compact strip */
+  .hero-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: .7rem;
+  }
+  .hb-card { padding: 1rem .9rem; border-radius: 18px; gap: .2rem; }
+  .hb-num  { font-size: 2rem; }
+  .hb-label{ font-size: .72rem; }
+  .hb-conf strong { font-size: 1.4rem; }
+  .hb-speed strong { font-size: 1.2rem; }
+  .hb-cta-mini strong { font-size: 1rem; }
+  .mini-arrow { width: 26px; height: 26px; font-size: .8rem; }
+  .speed-ring { width: 60px; height: 60px; border-width: 10px; }
+
+  .scroll-hint { display: none; }
+
+  /* ── Sections ── */
+  .section { padding: 2.5rem 0; }
+  .section-why { padding: 2.5rem 0; }
+  .sec-head { margin-bottom: 1.6rem; }
+  .sec-head h2 { font-size: clamp(1.6rem, 7vw, 2rem); }
+  .sec-head p  { font-size: .9rem; }
+  .eyebrow { font-size: .68rem; padding: .28rem .7rem; }
+
+  /* ── Bento grid — single column on mobile ── */
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    gap: .85rem;
+  }
+  .bc-wide, .bc-tall { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .bento-card { padding: 1.2rem 1rem; border-radius: 20px; gap: .5rem; }
+  .bc-ico { font-size: 1.6rem; }
+  .bento-card h3 { font-size: 1.05rem; }
+  .bc-list li { font-size: .85rem; }
+  .bc-list-row { flex-direction: column; gap: .4rem; }
+  .bc-list-row li { padding: .25rem .6rem; font-size: .82rem; }
+  .bc-tag { font-size: .65rem; }
+
+  /* ── Why bento — 2 cols on mobile ── */
+  .why-bento {
+    grid-template-columns: 1fr 1fr !important;
+    gap: .75rem;
+  }
+  .wc-big {
+    grid-column: span 2;    /* full width on mobile */
+    grid-row: span 1;
+    min-height: 130px;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.2rem;
+  }
+  .wc-num { font-size: 2.8rem; }
+  .wc-plus { font-size: 1.5rem; }
+  .wc-bg { font-size: 4rem; right: -5px; top: -5px; }
+  .why-card { padding: 1rem .9rem; border-radius: 18px; }
+  .wc-ico { font-size: 1.3rem; margin-bottom: .4rem; }
+  .why-card h4 { font-size: .92rem; margin-bottom: .2rem; }
+  .why-card p  { font-size: .8rem; }
+
+  /* ── Process — vertical timeline on mobile ── */
+  .process-row {
+    grid-template-columns: 1fr !important;
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  /* vertical line */
+  .process-row::before {
+    content: '';
+    position: absolute;
+    left: 1.15rem;
+    top: 2rem;
+    bottom: 2rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--purple), var(--purple-soft));
+    border-radius: 99px;
+  }
+  .proc-step {
+    align-items: flex-start;
+    text-align: left;
+    padding: 1.2rem 0 1.2rem 1.2rem;
+    position: relative;
+  }
+  .proc-line { display: none !important; }
+  .proc-num {
+    position: absolute;
+    left: -2.5rem;
+    top: 1.2rem;
+    width: 52px; height: 52px;
+    font-size: 1.4rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .proc-step h4 { font-size: 1.05rem; margin-bottom: .25rem; }
+  .proc-step p  { font-size: .87rem; max-width: 100%; }
+
+  /* ── Contact ── */
+  .contact-grid { gap: 1.5rem; }
+  .contact-info h2 { font-size: clamp(1.6rem, 7vw, 2rem); }
+  .contact-info > p { font-size: .92rem; }
+  .contact-person { padding: .8rem 1rem; gap: .8rem; }
+  .person-avatar { width: 44px; height: 44px; font-size: 1.1rem; }
+  .contact-person strong { font-size: .95rem; }
+  .contact-person span { font-size: .78rem; }
+  .contact-links { gap: .5rem; }
+  .clink { padding: .75rem .9rem; border-radius: 16px; gap: .7rem; }
+  .clink-ic { font-size: 1.1rem; }
+  .clink strong { font-size: .88rem; }
+  .clink small { font-size: .72rem; }
+
+  /* Form */
+  .contact-form { padding: 1.4rem 1rem; border-radius: 24px; }
+  .contact-form h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+  .form-row { grid-template-columns: 1fr !important; gap: 0; }
+  .fgroup { margin-bottom: .75rem; }
+  .fgroup label { font-size: .8rem; margin-bottom: .3rem; }
+  .fgroup input, .fgroup select, .fgroup textarea {
+    padding: .7rem .85rem; font-size: .9rem; border-radius: 12px;
+  }
+  .fgroup textarea { min-height: 75px; }
+  .form-note { font-size: .75rem; }
+
+  /* ── Footer ── */
+  .footer { padding: 2.5rem 0 0; margin-top: 2.5rem; }
+  .footer-inner {
+    grid-template-columns: 1fr !important;
+    gap: 1.8rem;
+    padding-bottom: 1.8rem;
+  }
+  .footer h5 { font-size: .95rem; margin-bottom: .6rem; }
+  .footer-col a { font-size: .85rem; }
+  .footer-brand p { font-size: .85rem; }
+  .footer-social { gap: .5rem; margin-top: .9rem; }
+  .footer-social a { width: 34px; height: 34px; border-radius: 9px; font-size: .9rem; }
+  .footer-bottom { padding: 1rem 0; }
+  .footer-bottom-inner { gap: .4rem; }
+
+  /* ── FAB ── */
+  .fab-wa { width: 52px; height: 52px; right: 1rem; bottom: 1rem; }
+  .fab-wa svg { width: 22px; height: 22px; }
+}
+
+/* ── Extra small screens (≤ 360px) ── */
+@media (max-width: 360px) {
+  .brand-name { font-size: .9rem; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 8px; }
+  .hero-copy h1 { font-size: 1.6rem; }
+  .btn.btn-wa.btn-sm span:not(svg) { display: none; }  /* icon only on tiny nav */
+  .hero-bento { grid-template-columns: 1fr 1fr; }
+  .why-bento  { grid-template-columns: 1fr; }
+  .wc-big { grid-column: span 1; }
+}
+
+/* ── Tablet (768px – 959px) ── */
+@media (min-width: 768px) and (max-width: 959px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .bc-wide { grid-column: span 2; }
+  .bc-tall { grid-row: span 1; }
+  .why-bento { grid-template-columns: repeat(3, 1fr); }
+  .wc-big { grid-column: span 1; grid-row: span 2; min-height: 200px; flex-direction: column; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .section { padding: 3rem 0; }
+}
